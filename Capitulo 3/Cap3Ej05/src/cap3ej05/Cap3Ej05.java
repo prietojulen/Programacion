@@ -93,7 +93,7 @@ public class Cap3Ej05 {
             
             
             JOptionPane.showMessageDialog(null,"Tu fecha +100 dias es ...");
-            JOptionPane.showMessageDialog(null,diaLetrasFin + ", "  + resultadoFecha.getDate() + " de " + mesLetrasFin + " de " + resultadoFecha.getYear()); 
+            JOptionPane.showMessageDialog(null,diaLetrasFin + ", "  + resultadoFecha.getDate() + " de " + mesLetrasFin + " de " + (resultadoFecha.getYear()+1900)); 
         }
         catch(Exception e ){
                System.out.println("Problemas al convertir String en Date" + e.getMessage());

@@ -12,6 +12,7 @@ public class Cap3Ej06 {
         
         String fecha = JOptionPane.showInputDialog("Teclea una fecha dd-MM-yyyy");
         String primavera = "21-02";
+        String fechaPrimavera = "21/2/1970";
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM");
                 
         try
@@ -28,10 +29,7 @@ public class Cap3Ej06 {
             int mesOtoño = 8;
             int mesInvierno = 11;    
             
-            if( fecha > primavera)
-            {
             
-            }
             
             
         
