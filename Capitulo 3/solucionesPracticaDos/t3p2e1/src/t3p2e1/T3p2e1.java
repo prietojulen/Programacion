@@ -22,7 +22,7 @@ public class T3p2e1 {
         int contador = 0;
         // Repetitiva para ir recorriendo la cadena
         for(int x = 0; x < cadena.length(); x++)
-        {        
+        {
             // charAt(x) == caracter de la posición x
             switch (cadena.charAt(x))
             {
