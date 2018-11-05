@@ -5,7 +5,7 @@ public class Cap3_RepasoFinal03 {
     public static int accion;
     public static int resultadoSuma;
     public static int resultadoResta;
-    public static String resultadoMultiplicar;
+    public static String resultadoMultiplicar = "\n ";
     public static int resultadoDivision;
     public static int resultadoResto;
     
@@ -32,8 +32,9 @@ public class Cap3_RepasoFinal03 {
                                  case 2: resta();
                                       JOptionPane.showMessageDialog(null, "El resultado es " + resultadoResta);
                                      break;
-                                /* case 3: multiplicar();
-                                     break;*/
+                                 case 3:
+                                       JOptionPane.showMessageDialog(null, "El resultado es " + multiplicar());
+                                     break;
                                  case 4: division();
                                       JOptionPane.showMessageDialog(null, "El resultado es " + resultadoDivision + " y el resto es de " + resultadoResto);
                                      break;
@@ -75,20 +76,20 @@ public class Cap3_RepasoFinal03 {
 
 
         }
-        /*
+        
         public static String multiplicar()
         {
             int n1 = Integer.parseInt(JOptionPane.showInputDialog("¿Qué numero quieres multiplicar?"));
             
             for (int i = 0; i<=10; i++)
             {
-                resultadoMultiplicar=  JOptionPane.showMessageDialog(null, i + " * " + n1 + "=" + i*n1 + "/n");
+                resultadoMultiplicar +=   i + " * " + n1 + "=" + i*n1 + "\n";
             }
                
            
             return resultadoMultiplicar;
         }
-        */
+        
              /*resultadoMultiplicar = System.out.println("12 * " + i + " = " + 12*i);*/
         
         
