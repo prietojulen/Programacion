@@ -12,8 +12,6 @@ public class Cap3_RepasoFinal03 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       
-       
             try
             {
                 do
@@ -26,8 +24,7 @@ public class Cap3_RepasoFinal03 {
                     }
                     else
                     {
-
-                             switch(accion)
+                        switch(accion)
                              {
                                  case 1: suma();
                                       JOptionPane.showMessageDialog(null, "El resultado es " + resultadoSuma);
@@ -45,9 +42,6 @@ public class Cap3_RepasoFinal03 {
                                      break;
 
                              }
-
-
-
                     } 
                 }
                 while(accion <=4 || accion >=6);
@@ -81,24 +75,24 @@ public class Cap3_RepasoFinal03 {
 
 
         }
-       /* public static int multiplicar()
+        /*
+        public static String multiplicar()
         {
             int n1 = Integer.parseInt(JOptionPane.showInputDialog("¿Qué numero quieres multiplicar?"));
             
             for (int i = 0; i<=10; i++)
             {
-               
-           
-                resultadoMultiplicar=  JOptionPane.showMessageDialog(null, i + " * " + n1 + "=" + i*n1);
+                resultadoMultiplicar=  JOptionPane.showMessageDialog(null, i + " * " + n1 + "=" + i*n1 + "/n");
             }
                
-            int resultadoMulti = Integer.parseInt(resultadoMultiplicar);
-            return resultadoMulti;
+           
+            return resultadoMultiplicar;
         }
-        */     /*resultadoMultiplicar = System.out.println("12 * " + i + " = " + 12*i);*/
+        */
+             /*resultadoMultiplicar = System.out.println("12 * " + i + " = " + 12*i);*/
         
         
-                public static int division()
+        public static int division()
         {
             int n1 = Integer.parseInt(JOptionPane.showInputDialog("Introduce el primer numero"));
             int n2 = Integer.parseInt(JOptionPane.showInputDialog("Introduce el segundo numero"));
