@@ -59,12 +59,7 @@ public class Tema4ej8 {
                 //mostrar mes + litros
                 JOptionPane.showMessageDialog(null,"Fila " + (x+1) + " columna " + (y+1) + " = " + suma);
                 
-            }
-        
-    
+        }
     }
-    
-    
-    
-    
+     
 }
