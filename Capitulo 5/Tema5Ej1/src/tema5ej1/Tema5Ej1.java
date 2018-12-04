@@ -69,15 +69,15 @@ public class Tema5Ej1 {
                 break;
             case 3: opc3();
                 break;
-            case 4: opc4();
+            case 4: opc4(numeros);
                 break;
-            case 5: opc5();
+            case 5: opc5(numeros);
                 break;
             case 6: opc6(numeros);
                 break;
             case 7: opc7(numeros);
                 break;
-            case 8: opc8();
+            case 8: opc8(numeros);
                 break;
             case 9: opc9();
                 break;
@@ -100,15 +100,12 @@ public class Tema5Ej1 {
             if(numeros.get(x) > maximo)
             {
                 maximo = numeros.get(x);
-            
             }
             if(numeros.get(x) < minimo)
             {
                 minimo = numeros.get(x);
             }
- 
         }  
-        
         JOptionPane.showMessageDialog(null, "El numero mínimo es " + minimo + " \n"
                 + "El numero máximo es " + maximo);
         
@@ -141,15 +138,29 @@ public class Tema5Ej1 {
             {
                 JOptionPane.showMessageDialog(null, "¡No he encontrado tu numero :'( ");
             }
-        
         }
         */
     
     
     }
     public static void opc3(){}
-    public static void opc4(){}
-    public static void opc5(){}
+    
+    public static void opc4(ArrayList<Double> numeros)
+    {
+    
+        numeros.toArray();
+
+    }
+    public static void opc5(ArrayList numeros)
+    {
+        for(int x=0; x > numeros.size() ; x++)
+        {
+            
+            
+            
+        }
+        
+    }
     
     public static void opc6(ArrayList numeros)
     {
@@ -160,8 +171,6 @@ public class Tema5Ej1 {
            
       numeros.add(valor);  
 
-      
-     
     }
     public static void opc7(ArrayList numeros){
     //Insertamos un numero en la posicion que nos indiquen
@@ -175,10 +184,24 @@ public class Tema5Ej1 {
     numeros.add(posicion,valor);
 
     }
-    public static void opc8(){}
-    public static void opc9(){}
-    public static void opc10(){}
+    public static void opc8(ArrayList numeros)
+    {
+        //borrar un elemento de una posición concreta
+        
+        int eliminar = Integer.parseInt(JOptionPane.showInputDialog("Introduce una posición a eliminar"));
+        numeros.remove(numeros.get(eliminar));  
+    }
+    public static void opc9(ArrayList numeros)
+    {
+        for(int x=0; x > numeros.size() ; x++)
+        {
+          
+            //Double total =  total + numeros.get(x);
+            
+        }
     
+    
+    }
 
     
 }
