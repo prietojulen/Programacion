@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="diagrama_aviones_java">
+  <ClassDiagramComponents>
+    <Class name="Vuelos" package="" visibility="public" xPosition="315.0" yPosition="116.0">
+      <Fields>
+        <Field name="cod_vuelo" type="int" visibility="private"/>
+        <Field name="hora_salida" type="String" visibility="private"/>
+        <Field name="hora_llegada" type="String" visibility="private"/>
+        <Field name="origen" type="String" visibility="private"/>
+        <Field name="destino" type="String" visibility="private"/>
+        <Field name="f_salida" type="Date" visibility="private"/>
+        <Field name="f_regreso" type="Date" visibility="private"/>
+        <Field name="tipo_vuelo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="reservar" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="eliminar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Asiento" package="" visibility="public" xPosition="284.0" yPosition="463.0">
+      <Fields>
+        <Field name="cod_asiento" type="int" visibility="private"/>
+        <Field name="estado" type="Boolean" visibility="private"/>
+        <Field name="compartimento" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="reservar" returnType="void" visibility="public"/>
+        <Method name="comprar" returnType="void" visibility="public"/>
+        <Method name="mostrarDisponibilidad" returnType="boolean" visibility="public"/>
+        <Method name="desbloquear" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pasajeros" package="" visibility="public" xPosition="61.0" yPosition="416.0">
+      <Fields>
+        <Field name="cedula" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="Sexo" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="agregar_nuevo" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="asignar_vuelo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ciudades" package="" visibility="public" xPosition="50.0" yPosition="192.0">
+      <Fields>
+        <Field name="cod_ciudad" type="Int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="agregar_nuevo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Aviones" package="" visibility="public" xPosition="639.0" yPosition="87.0">
+      <Fields>
+        <Field name="aerolinea" type="String" visibility="private"/>
+        <Field name="cod_avion" type="int" visibility="private"/>
+        <Field name="numero_asientos" type="int" visibility="private"/>
+        <Field name="compartimentos" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="asignar_vuelo" returnType="void" visibility="public"/>
+        <Method name="cancelar_vuelo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Piloto" package="" visibility="public" xPosition="628.0" yPosition="426.0">
+      <Fields>
+        <Field name="cod_piloto" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="n_licencia" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="agregar_nuevo" returnType="void" visibility="public"/>
+        <Method name="asignar_vuelo" returnType="void" visibility="public"/>
+        <Method name="cancelar_vuelo" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="pilota" source="Vuelos" target="Piloto" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="viaja" source="Vuelos" target="Ciudades" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="tiene" source="Vuelos" target="Asiento" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="lleva a" source="Vuelos" target="Pasajeros" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <HasRelation name="lo hace" source="Vuelos" target="Aviones" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
