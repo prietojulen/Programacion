@@ -7,8 +7,8 @@ public class T8p4ej1 {
 
     static LogIn Li;
     static VentanaPrincipal Vp;
-    private static ArrayList<Personal> listaPersonal;
-    private static Personal p;
+    private static ArrayList<LogInPersonal> listaPersonal;
+    private static LogInPersonal p;
     
     
     
@@ -24,8 +24,8 @@ public class T8p4ej1 {
     
     public static void añadirLogIn(){
     
-        listaPersonal = new ArrayList<Personal>();
-        p = new Personal ("admin","admin");
+        listaPersonal = new ArrayList<LogInPersonal>();
+        p = new LogInPersonal ("admin","admin");
         listaPersonal.add(p);
     
     }

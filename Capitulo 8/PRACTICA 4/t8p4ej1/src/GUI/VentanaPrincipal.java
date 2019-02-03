@@ -16,6 +16,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        this.setResizable(false); 
         this.setLocationRelativeTo(null);
     }
 
@@ -76,6 +77,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
+
+        jMenuBar1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
 
         jMenu1.setText("Personas");
 
