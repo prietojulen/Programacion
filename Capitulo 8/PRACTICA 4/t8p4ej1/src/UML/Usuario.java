@@ -2,15 +2,15 @@
 package UML;
 
 
-public class LogInPersonal {
+public class Usuario extends Persona {
     
     private String nombre;
     private String contraseña;
 
-    public LogInPersonal() {
+    public Usuario() {
     }
 
-    public LogInPersonal(String nombre, String contraseña) {
+    public Usuario(String nombre, String contraseña) {
         this.nombre = nombre;
         this.contraseña = contraseña;
     }

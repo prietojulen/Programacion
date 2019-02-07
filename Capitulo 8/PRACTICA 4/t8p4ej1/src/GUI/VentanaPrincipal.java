@@ -36,9 +36,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuAlta = new javax.swing.JMenuItem();
+        menuBaja = new javax.swing.JMenuItem();
+        menuModificacion = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -82,15 +82,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Personas");
 
-        jMenuItem1.setText("Alta");
-        jMenu1.add(jMenuItem1);
+        menuAlta.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/add.png")); // NOI18N
+        menuAlta.setText("Alta");
+        menuAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAltaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuAlta);
 
-        jMenuItem2.setText("Modificación");
-        jMenu1.add(jMenuItem2);
+        menuBaja.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/delete.png")); // NOI18N
+        menuBaja.setText("Baja");
+        jMenu1.add(menuBaja);
 
-        jMenuItem3.setText("Baja");
-        jMenu1.add(jMenuItem3);
+        menuModificacion.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/edit.png")); // NOI18N
+        menuModificacion.setText("Modificación");
+        menuModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificacionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuModificacion);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/list.png")); // NOI18N
         jMenu3.setText("Listado");
 
         jMenuItem4.setText("Por número de empleado");
@@ -150,6 +164,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenu2MouseClicked
 
+    private void menuAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAltaActionPerformed
+        // TODO add your handling code here:
+        t8p4ej1.Main.clickAlta();
+    }//GEN-LAST:event_menuAltaActionPerformed
+
+    private void menuModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuModificacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,14 +215,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem menuAlta;
+    private javax.swing.JMenuItem menuBaja;
+    private javax.swing.JMenuItem menuModificacion;
     // End of variables declaration//GEN-END:variables
 }

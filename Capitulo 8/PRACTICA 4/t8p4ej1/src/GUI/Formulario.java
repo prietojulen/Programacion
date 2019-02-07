@@ -43,11 +43,8 @@ public class Formulario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tfDni = new javax.swing.JTextField();
-        tfNss = new javax.swing.JTextField();
         tfNombreApellido = new javax.swing.JTextField();
         tfDireccion = new javax.swing.JTextField();
-        tfTelefono = new javax.swing.JTextField();
         rbHombre = new javax.swing.JRadioButton();
         rbMujer = new javax.swing.JRadioButton();
         rbSoltero = new javax.swing.JRadioButton();
@@ -58,6 +55,9 @@ public class Formulario extends javax.swing.JFrame {
         tfNumeroEmpleado = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
+        tfDni = new javax.swing.JFormattedTextField();
+        tfNss = new javax.swing.JFormattedTextField();
+        tfTelefono = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,15 +85,9 @@ public class Formulario extends javax.swing.JFrame {
 
         jLabel11.setText("Número de empleado");
 
-        tfDni.setBackground(new java.awt.Color(204, 204, 204));
-
-        tfNss.setBackground(new java.awt.Color(204, 204, 204));
-
         tfNombreApellido.setBackground(new java.awt.Color(204, 204, 204));
 
         tfDireccion.setBackground(new java.awt.Color(204, 204, 204));
-
-        tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
 
         bgSexo.add(rbHombre);
         rbHombre.setText("Hombre");
@@ -116,14 +110,47 @@ public class Formulario extends javax.swing.JFrame {
         cbDepartamento.setSelectedIndex(-1);
 
         tfFechaDeAlta.setBackground(new java.awt.Color(204, 204, 204));
+        tfFechaDeAlta.setEnabled(false);
 
         tfNumeroEmpleado.setBackground(new java.awt.Color(204, 204, 204));
+        tfNumeroEmpleado.setEnabled(false);
 
         bAceptar.setBackground(new java.awt.Color(0, 102, 204));
         bAceptar.setText("Aceptar");
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bCancelar.setBackground(new java.awt.Color(0, 102, 255));
         bCancelar.setText("Cancelar");
+        bCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCancelarMouseClicked(evt);
+            }
+        });
+
+        tfDni.setBackground(new java.awt.Color(204, 204, 204));
+        try {
+            tfDni.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########?")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        tfNss.setBackground(new java.awt.Color(204, 204, 204));
+        try {
+            tfNss.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-##-####-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        tfTelefono.setBackground(new java.awt.Color(204, 204, 204));
+        try {
+            tfTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,15 +177,14 @@ public class Formulario extends javax.swing.JFrame {
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbContrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                        .addComponent(tfDireccion)
-                                        .addComponent(tfNombreApellido))
+                                    .addComponent(tfDireccion)
+                                    .addComponent(tfNombreApellido)
                                     .addComponent(cbDepartamento, 0, 331, Short.MAX_VALUE)
                                     .addComponent(tfFechaDeAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNss, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(tfDni)
+                                    .addComponent(tfNss)
+                                    .addComponent(tfTelefono))))
                         .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +214,7 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(tfDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(tfNss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -200,10 +226,13 @@ public class Formulario extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(tfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -240,6 +269,8 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        tfFechaDeAlta.setText(t8p4ej1.Main.sysdate());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,6 +288,36 @@ public class Formulario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCancelarMouseClicked
+        // Al clickar el boton cancelal...
+        
+        t8p4ej1.Main.cancelarFormulario();
+        //t8p4ej1.Main.generarListado();
+    }//GEN-LAST:event_bCancelarMouseClicked
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        // Insertar empleado
+        
+        t8p4ej1.Main.crearNuevoUsuario();
+        
+        //Limpiamos el fomulario
+        tfDni.setText(null);
+        tfNss.setText(null);
+        tfNombreApellido.setText("");
+        tfDireccion.setText("");
+        tfTelefono.setText("");
+        bgSexo.clearSelection();
+        bgEstadoCivil.clearSelection();
+        cbContrato.getItemAt(-1);
+        cbDepartamento.getItemAt(-1);
+        tfNumeroEmpleado.setText("");
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_bAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,11 +378,11 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbMujer;
     private javax.swing.JRadioButton rbSoltero;
     private javax.swing.JTextField tfDireccion;
-    private javax.swing.JTextField tfDni;
+    private javax.swing.JFormattedTextField tfDni;
     private javax.swing.JTextField tfFechaDeAlta;
     private javax.swing.JTextField tfNombreApellido;
-    private javax.swing.JTextField tfNss;
+    private javax.swing.JFormattedTextField tfNss;
     private javax.swing.JTextField tfNumeroEmpleado;
-    private javax.swing.JTextField tfTelefono;
+    private javax.swing.JFormattedTextField tfTelefono;
     // End of variables declaration//GEN-END:variables
 }

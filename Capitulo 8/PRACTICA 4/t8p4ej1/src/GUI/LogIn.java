@@ -13,6 +13,8 @@ import t8p4ej1.*;
  * @author PETO
  */
 public class LogIn extends javax.swing.JFrame {
+    boolean comprobarNombre = false;
+    int loginFallidos = 0;
 
     /**
      * Creates new form LogIn
@@ -34,6 +36,7 @@ public class LogIn extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,9 +47,12 @@ public class LogIn extends javax.swing.JFrame {
         bAceptar = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
         pfContraseña = new javax.swing.JPasswordField();
+        lablelAunNoTienesUsuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
+
+        jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,9 +114,19 @@ public class LogIn extends javax.swing.JFrame {
         jPanel2.add(pfContraseña);
         pfContraseña.setBounds(227, 196, 200, 30);
 
+        lablelAunNoTienesUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lablelAunNoTienesUsuario.setText("¿Aún no tienes usuario?");
+        lablelAunNoTienesUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lablelAunNoTienesUsuarioMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lablelAunNoTienesUsuario);
+        lablelAunNoTienesUsuario.setBounds(340, 240, 170, 16);
+
         jLabel4.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/fondo.jpg")); // NOI18N
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(0, 0, 590, 340);
+        jLabel4.setBounds(0, 0, 700, 340);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,7 +152,7 @@ public class LogIn extends javax.swing.JFrame {
     private void tfUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUsuarioFocusLost
         // Comprobamos que el campo no esté vacío:
         
-        try{
+        /*try{
             if(tfUsuario.getText().isEmpty()){
             throw new CampoVacio();
             }
@@ -147,14 +163,14 @@ public class LogIn extends javax.swing.JFrame {
         }
         catch(Exception e){
             
-        }
+        }*/
         
         
     }//GEN-LAST:event_tfUsuarioFocusLost
 
     private void pfContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfContraseñaFocusLost
-        // TODO add your handling code here:
-        try{
+        // Comprobamos la contraseña
+        /*try{
             if(pfContraseña.getText().isEmpty()){
             throw new CampoVacio();
             }
@@ -165,16 +181,49 @@ public class LogIn extends javax.swing.JFrame {
         }
         catch(Exception e){
             
-        }
+        }*/
     }//GEN-LAST:event_pfContraseñaFocusLost
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        // COMPROBAR DATOS DEL LOGIN
+        // Comprobamos que el campo no esté vacío:
         
-        T8p4ej1.comprobarLogin();
         
+        //SI ES VALIDO. PARA MI SIEMPRE ES, PERO NOUP
+        
+        String nombre = tfUsuario.getText();
+        //String contraseña = pfContraseña.toString();
+        
+        String pwd = new String(pfContraseña.getPassword());
+        
+        if(!t8p4ej1.Main.comprobarLogin(nombre, pwd)){
+            
+            System.out.println("NO VALIDO");
+            
+            loginFallidos++;
+            JOptionPane.showMessageDialog(null,"Llevas " + loginFallidos + " fallo(s)");
+        }else{
+            
+            System.out.println("VALIDO");
+            
+            t8p4ej1.Main.finalizarLogin();
+        }
+       
+        
+        if(loginFallidos == 3){
+            JOptionPane.showMessageDialog(null, "Demasiados errores, aguuuuur");
+            System.exit(0);       
+        }
+        
+        
+        
+        //t8p4ej1.Main.finalizarLogin();
         
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void lablelAunNoTienesUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lablelAunNoTienesUsuarioMouseClicked
+        // ¿Aún no tienes usuario?
+        Main.crearUsuarioNuevoVentana();
+    }//GEN-LAST:event_lablelAunNoTienesUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,7 +270,9 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lablelAunNoTienesUsuario;
     private javax.swing.JPasswordField pfContraseña;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables

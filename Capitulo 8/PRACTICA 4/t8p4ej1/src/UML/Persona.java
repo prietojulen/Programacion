@@ -13,15 +13,18 @@ public class Persona {
     private String telefono;
     private String sexo;
     private String estadoCivil;
-    private String contrato;
-    private String departamento;
     private Date fechaAlta;
     private int numeroEmpleado;
+    
+    //relaciones
+    private Contrato C;
+    private Departamento D;
+    private Usuario U;
 
     public Persona() {
     }
 
-    public Persona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, String contrato, String departamento, Date fechaAlta, int numeroEmpleado) {
+    public Persona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, Contrato contrato, Departamento departamento, Date fechaAlta, int numeroEmpleado) {
         this.dni = dni;
         this.nss = nss;
         this.nombreApellido = nombreApellido;
@@ -29,8 +32,8 @@ public class Persona {
         this.telefono = telefono;
         this.sexo = sexo;
         this.estadoCivil = estadoCivil;
-        this.contrato = contrato;
-        this.departamento = departamento;
+        this.C = contrato;
+        this.D = departamento;
         this.fechaAlta = fechaAlta;
         this.numeroEmpleado = numeroEmpleado;
     }
@@ -91,22 +94,6 @@ public class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    public String getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(String contrato) {
-        this.contrato = contrato;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
     public Date getFechaAlta() {
         return fechaAlta;
     }
@@ -122,8 +109,30 @@ public class Persona {
     public void setNumeroEmpleado(int numeroEmpleado) {
         this.numeroEmpleado = numeroEmpleado;
     }
-            
-    
-    
+
+    public Contrato getC() {
+        return C;
+    }
+
+    public void setC(Contrato C) {
+        this.C = C;
+    }
+
+    public Departamento getD() {
+        return D;
+    }
+
+    public void setD(Departamento D) {
+        this.D = D;
+    }
+
+    public Usuario getU() {
+        return U;
+    }
+
+    public void setU(Usuario U) {
+        this.U = U;
+    }
+
     
 }
