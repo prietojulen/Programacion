@@ -5,15 +5,16 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PETO
  */
 public class Formulario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Formulario
-     */
+     String fecha = t8p4ej1.Main.sysdate();
+     int numEmp = 0;
     public Formulario() {
         initComponents();
         this.setResizable(false); 
@@ -128,6 +129,11 @@ public class Formulario extends javax.swing.JFrame {
         bCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bCancelarMouseClicked(evt);
+            }
+        });
+        bCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelarActionPerformed(evt);
             }
         });
 
@@ -299,7 +305,44 @@ public class Formulario extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         // Insertar empleado
         
-        t8p4ej1.Main.crearNuevoUsuario();
+        /*dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,
+        contrato,departamento,fechaAlta,numEmp+1 */
+        String dni = tfDni.getText();
+        String nss = tfNss.getText();
+        String nombreApellido = tfNombreApellido.getText();
+        String direccion = tfDireccion.getText();
+        String telefono = tfTelefono.getText();
+        String sexo = "";
+            if(rbHombre.isSelected()){
+                sexo = "Hombre";
+            }else{
+                sexo = "Mujer";
+            }
+        String estadoCivil = "";
+            if(rbSoltero.isSelected()){
+                estadoCivil="Soloter@";
+            }else{
+                estadoCivil = "Casad@";
+            }
+        String contrat = cbContrato.getSelectedItem().toString();
+             
+        String departament = cbDepartamento.getSelectedItem().toString();
+        
+       
+        
+            System.out.println(dni + "\n"  + 
+                    nss +"\n" +
+                    nombreApellido  +"\n" +
+                    direccion  +"\n" +
+                    telefono  +"\n" +
+                    sexo  +"\n" +
+                    estadoCivil);
+                System.out.println("Contrato " + contrat);
+                System.out.println("Departamento " + departament);
+                System.out.println("fecha " + fecha);
+        
+        t8p4ej1.Main.addPersona(dni, nss, nombreApellido, direccion, telefono, sexo, estadoCivil, contrat, departament, t8p4ej1.Main.sysdateDate(),numEmp+1);
+
         
         //Limpiamos el fomulario
         tfDni.setText(null);
@@ -318,6 +361,15 @@ public class Formulario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
+        // TODO add your handling code here:
+        
+        this.dispose();
+        t8p4ej1.Main.finalizarLogin();
+        
+        
+    }//GEN-LAST:event_bCancelarActionPerformed
 
     /**
      * @param args the command line arguments

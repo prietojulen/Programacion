@@ -5,10 +5,9 @@
  */
 package GUI;
 
-/**
- *
- * @author PETO
- */
+import javax.swing.JOptionPane;
+
+
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
@@ -18,6 +17,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false); 
         this.setLocationRelativeTo(null);
+        
+       //t8p4ej1.Main.p.getU().getNombre();
+       
     }
 
     /**
@@ -34,6 +36,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        bLogOut = new javax.swing.JButton();
+        labelNombre = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuAlta = new javax.swing.JMenuItem();
@@ -43,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jTextField1.setText("jTextField1");
@@ -57,26 +63,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Indica que operación deseas realizar");
 
+        bLogOut.setText("LogOut");
+        bLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLogOutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1)
+                        .addGap(82, 82, 82)
+                        .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bLogOut)
+                .addGap(70, 70, 70))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addGap(103, 103, 103)
+                .addGap(67, 67, 67)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(97, 97, 97)
                 .addComponent(jLabel2)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(bLogOut)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        ;
 
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
 
@@ -106,6 +137,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/list.png")); // NOI18N
         jMenu3.setText("Listado");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
         jMenuItem4.setText("Por número de empleado");
         jMenu3.add(jMenuItem4);
@@ -115,6 +151,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItem6.setText("Por departamento");
         jMenu3.add(jMenuItem6);
+
+        jMenuItem1.setText("Listar Pruebas");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
 
         jMenu1.add(jMenu3);
 
@@ -147,7 +196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,6 +221,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void menuModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuModificacionActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+      
+
+        
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+          JOptionPane.showMessageDialog(null,t8p4ej1.Main.listarUsuarios());
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void bLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogOutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        t8p4ej1.Main.logOut();
+        
+    }//GEN-LAST:event_bLogOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,18 +282,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLogOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JTextField jTextField1;
+    public static javax.swing.JLabel labelNombre;
     private javax.swing.JMenuItem menuAlta;
     private javax.swing.JMenuItem menuBaja;
     private javax.swing.JMenuItem menuModificacion;

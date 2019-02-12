@@ -17,10 +17,12 @@ public class Main {
     static FormularioUsuarios Fu;
     
     private static ArrayList<Persona> listaPersona = new ArrayList<Persona>();
-    private static Persona p;
+    public static Persona p;
     
     private static Contrato[] aContrato;
     private static Departamento[] aDepartamento;
+    
+    private static int numEmp = 0;
     
     
     
@@ -65,16 +67,17 @@ public class Main {
             return true;
         }
     }
+    
        
-    
-    
-    
+
     public static void finalizarLogin(){
     
        Li.dispose();
        
        Vp = new VentanaPrincipal();
        Vp.setVisible(true);
+       
+       GUI.VentanaPrincipal.labelNombre.setText(p.getU().getNombre());
     }
     
     public static void clickAlta(){
@@ -157,48 +160,107 @@ public class Main {
         aDepartamento[8] = new Departamento(9, "Dirección");
 
     }
-    
-   /* public static boolean altaPersona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, String contrato, String departamento, Date fechaAlta, int numeroEmpleado){
-        try{
-            listaPersona.add(new Persona(dni, nss, nombreApellido, direccion, telefono, sexo, estadoCivil, contrato, departamento, fechaAlta, 0));
-            return true;
-            
-        }
-        catch(Exception e){
-            return false;
-        }
-    }
-    */
-    /*
-    public static String generarListado(){
-        String datos="";
-        for(int x = 0; x < listaPersona.size(); x++)
-        {
-            datos += listaPersona.get(x).getDni()+ "  \n" + listaPersona.get(x).getNss()+ "  \n" + listaPersona.get(x).getNombreApellido()
-                    + "  \n" + listaPersona.get(x).getDireccion()+ "  \n" + listaPersona.get(x).getTelefono()
-                    + "  \n" + listaPersona.get(x).getSexo()+ "  \n" + listaPersona.get(x).getEstadoCivil()
-                    + "  \n" + listaPersona.get(x).getContrato()+ "  \n" + listaPersona.get(x).getDepartamento()
-                    + "  \n" + listaPersona.get(x).getFechaAlta()+ "  \n" + listaPersona.get(x).getNumeroEmpleado();
-        
-            JOptionPane.showMessageDialog(null, datos);
-        }
-        if (datos.compareTo("")== 0)
-            datos = "No hay datos que mostrar";
-        return datos;
-    }    
-    */
-    
-    
-    
-    
+     
     public static String sysdate(){
     
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Calendar cal = Calendar.getInstance();
-    System.out.println(dateFormat.format(cal.getTime()));
-    
-    String fecha = dateFormat.format(cal.getTime());
-    
-    return fecha;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
+
+        String fecha = dateFormat.format(cal.getTime());
+
+        return fecha;
     }
+    
+        public static Date sysdateDate(){
+    
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
+
+       
+
+        return cal.getTime();
+    }
+    
+
+    public static boolean addPersona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, String contrat, String departament, Date fechaAlta, int numEmp){
+    
+        Persona p2 = new Persona(dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,contrat,departament,fechaAlta,numEmp+1);
+        listaPersona.add(p2);
+        
+        System.out.println(p2);
+    
+        return true;
+    }
+    
+    public static String listarUsuarios(){
+    
+        int x;
+        String list ="";
+        for(x=0;x < listaPersona.size(); x++){
+            list+= "Dni " + listaPersona.get(x).getDni() + "\n"
+                    + "Nss " + listaPersona.get(x).getNss() + "\n"
+                    + "Nombre y Apellidos " + listaPersona.get(x).getNombreApellido() + "\n"
+                    + "Direccion " + listaPersona.get(x).getNombreApellido() + "\n"
+                    + "Telefono " + listaPersona.get(x).getTelefono() + "\n"
+                    + "Sexo " + listaPersona.get(x).getSexo() + "\n"
+                    + "Estado Civil " + listaPersona.get(x).getEstadoCivil() + "\n"
+                    + "Contrato " + listaPersona.get(x).getC() + "\n"
+                    + "Departamento " + listaPersona.get(x).getD() + "\n"
+                    + "Fecha " + listaPersona.get(x).getFechaAlta() + "\n"
+                    + "Numero emp " + listaPersona.get(x).getNumeroEmpleado() + "\n";
+  
+        }
+    
+        return list;
+    
+    }
+    
+    public static boolean  buscarDni(String tfDni){
+        
+        int x;
+        boolean encontrado = false;
+        for(x=0; x < listaPersona.size(); x++){
+            if(!tfDni.equals(listaPersona.get(x).getDni())){
+                encontrado = false;
+            }else{
+                encontrado = true;
+            }
+        
+        }
+        return encontrado;
+    }
+    
+    public static void logOut(){
+    
+        
+        JOptionPane.showMessageDialog(null,"AAAADIOOSSSS  " + p.getU().getNombre());
+        Vp.dispose();
+        
+        Li = new LogIn();
+        Li.setVisible(true);
+    }
+    public static void llenarComboBoxContrato(){
+    
+       int x = 0;
+       String tipoContrato="";
+       
+       //for(x=0; x < aContrato.length; x++){
+            
+       //    tipoContrato = aContrato[x].getTipoContrato();
+       //    GUI.Formulario.cbContrato.addItem(tipoContrato);
+           
+       // }
+  
+       
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
