@@ -83,7 +83,29 @@ public class Main {
     public static void clickAlta(){
         Vp.dispose();
         
-        Fo = new Formulario();
+        
+        Fo = new Formulario("alta");
+        
+        Fo.llenarComboBoxContrato(aContrato);
+        Fo.llenarComboBoxDepartamento(aDepartamento);
+        Fo.setVisible(true);
+    }
+        public static void clickBorrar(){
+        Vp.dispose();
+        
+        Fo = new Formulario("borrar");
+        
+        Fo.llenarComboBoxContrato(aContrato);
+        Fo.llenarComboBoxDepartamento(aDepartamento);
+        Fo.setVisible(true);
+    }
+    public static void clickModificar(){
+        Vp.dispose();
+        
+        Fo = new Formulario("modificar");
+        
+        Fo.llenarComboBoxContrato(aContrato);
+        Fo.llenarComboBoxDepartamento(aDepartamento);
         Fo.setVisible(true);
     }
     
@@ -98,11 +120,6 @@ public class Main {
         Fu = new FormularioUsuarios();
         Fu.setVisible(true);
         
-    }
-    public static void crearNuevoUsuario(){
-       
-    
-    
     }
     public static void cancelarFormularioUsuarios(){
         Fu.dispose();
@@ -172,27 +189,48 @@ public class Main {
         return fecha;
     }
     
-        public static Date sysdateDate(){
+    public static Date sysdateDate(){
     
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
 
-       
-
         return cal.getTime();
     }
     
 
-    public static boolean addPersona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, String contrat, String departament, Date fechaAlta, int numEmp){
+    public static boolean addPersona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil,Contrato C,Departamento D, Date fechaAlta, int numEmp){
     
-        Persona p2 = new Persona(dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,contrat,departament,fechaAlta,numEmp+1);
+        Persona p2 = new Persona(dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,C,D,fechaAlta,numEmp+1);
         listaPersona.add(p2);
         
         System.out.println(p2);
     
         return true;
     }
+    public static boolean modificarPersona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil,Contrato C,Departamento D, Date fechaAlta, int numEmp){
+    
+        Persona p2 = new Persona(dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,C,D,fechaAlta,numEmp+1);
+        //listaPersona.add(p2);
+        p2.setNombreApellido(nombreApellido);
+        p2.setDireccion(direccion);
+        p2.setTelefono(telefono);
+        p2.setSexo(sexo);
+        p2.setC(C);
+        p2.setD(D);
+        
+        System.out.println(p2);
+    
+        return true;
+    }
+    /*
+    public static boolean borrarPersona(Persona p2){
+    
+        listaPersona.remove(p2);
+
+        return true;
+    } 
+    */
     
     public static String listarUsuarios(){
     
@@ -209,29 +247,15 @@ public class Main {
                     + "Contrato " + listaPersona.get(x).getC() + "\n"
                     + "Departamento " + listaPersona.get(x).getD() + "\n"
                     + "Fecha " + listaPersona.get(x).getFechaAlta() + "\n"
-                    + "Numero emp " + listaPersona.get(x).getNumeroEmpleado() + "\n";
+                    + "Numero emp " + listaPersona.get(x).getNumeroEmpleado() + "\n" +
+                    "------------------------------------------- \n";
   
         }
     
         return list;
     
     }
-    
-    public static boolean  buscarDni(String tfDni){
-        
-        int x;
-        boolean encontrado = false;
-        for(x=0; x < listaPersona.size(); x++){
-            if(!tfDni.equals(listaPersona.get(x).getDni())){
-                encontrado = false;
-            }else{
-                encontrado = true;
-            }
-        
-        }
-        return encontrado;
-    }
-    
+
     public static void logOut(){
     
         
@@ -241,26 +265,32 @@ public class Main {
         Li = new LogIn();
         Li.setVisible(true);
     }
-    public static void llenarComboBoxContrato(){
     
-       int x = 0;
-       String tipoContrato="";
-       
-       //for(x=0; x < aContrato.length; x++){
-            
-       //    tipoContrato = aContrato[x].getTipoContrato();
-       //    GUI.Formulario.cbContrato.addItem(tipoContrato);
-           
-       // }
-  
-       
+
+    public static Persona buscar(){
+        
+        String dni = JOptionPane.showInputDialog("¿A quien estas buscando? \n"
+                + "Introduzca dni");
+        
+        int x;
+        Persona persona = new Persona();
+        boolean encontrado = false;
+        
+        for(x=0; x < listaPersona.size(); x++){
+            if(dni.equals(listaPersona.get(x).getDni())){
+                persona = listaPersona.get(x);
+                encontrado = true;
+            }
+        }
+        if(encontrado){
+            JOptionPane.showMessageDialog(null, "Encontrado!");
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario no existe en el sistema!");
+        }
+        
+        return persona;
     }
-    
-    
-    
-    
-    
-    
+ 
     
     
 }

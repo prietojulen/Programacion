@@ -124,6 +124,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBaja.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/delete.png")); // NOI18N
         menuBaja.setText("Baja");
+        menuBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBajaActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuBaja);
 
         menuModificacion.setIcon(new javax.swing.ImageIcon("/Volumes/DAW /Programacion/Capitulo 8/PRACTICA 4/t8p4ej1/edit.png")); // NOI18N
@@ -220,6 +225,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void menuModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificacionActionPerformed
         // TODO add your handling code here:
+        t8p4ej1.Main.clickModificar();
+        
     }//GEN-LAST:event_menuModificacionActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
@@ -245,6 +252,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         t8p4ej1.Main.logOut();
         
     }//GEN-LAST:event_bLogOutActionPerformed
+
+    private void menuBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBajaActionPerformed
+        // TODO add your handling code here:
+        
+        t8p4ej1.Main.buscar();
+        t8p4ej1.Main.clickBorrar();
+        
+        
+    }//GEN-LAST:event_menuBajaActionPerformed
 
     /**
      * @param args the command line arguments

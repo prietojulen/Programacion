@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import UML.Contrato;
+import UML.Departamento;
+import UML.Persona;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +16,58 @@ import javax.swing.JOptionPane;
  */
 public class Formulario extends javax.swing.JFrame {
 
-     String fecha = t8p4ej1.Main.sysdate();
-     int numEmp = 0;
+    String fecha = t8p4ej1.Main.sysdate();
+    int numEmp = 1;
+     
+    private Contrato[] aContrato;
+    private Departamento[]aDepartamento;
+    
+    String accion;
+    
+    Persona p;
+     
     public Formulario() {
         initComponents();
         this.setResizable(false); 
         this.setLocationRelativeTo(null);
+    }
+    
+    
+    public Formulario(String act) {
+        initComponents();
+        this.setResizable(false); 
+        this.setLocationRelativeTo(null);
+        
+        accion = act;
+        
+        if(accion.equals("baja")){
+            
+            p = t8p4ej1.Main.buscar();
+            
+            this.deshabilitarComponentesBorrar();
+            
+            this.rellenarDatos(); //Función que RELLENA los datos.
+            
+           JOptionPane.showMessageDialog(null, "eeeeeh que vas a borrar");
+           
+           //t8p4ej1.Main.borrarPersona(p);
+
+        }
+        if(accion.equals("modificar")){
+            
+            
+            p = t8p4ej1.Main.buscar();
+            
+            this.rellenarDatos(); //Función que RELLENA los datos.
+        
+            this.deshabilitarComponentesModificar();
+            
+             JOptionPane.showMessageDialog(null, "eeeeeh que vas a modificar");
+             
+             
+        }
+        
+        
     }
 
     /**
@@ -103,11 +152,9 @@ public class Formulario extends javax.swing.JFrame {
         rbCasado.setText("Casad@");
 
         cbContrato.setBackground(new java.awt.Color(204, 204, 204));
-        cbContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indefinido", "Temporal", "Por obra o servicio", "Eventual", "Interinidad", "Relevo", "Formación y aprendizaje", "Prácticas" }));
         cbContrato.setSelectedIndex(-1);
 
         cbDepartamento.setBackground(new java.awt.Color(204, 204, 204));
-        cbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departamento de Compras", "Departamento de Recursos Humanos", "Departamento de Producción", "Departamento de Control de Gestión", "Departamento de Marketing", "Departamento de Ventas", "Departamento de Administración", "Departamento de Finanzas", "Departamento de Dirección" }));
         cbDepartamento.setSelectedIndex(-1);
 
         tfFechaDeAlta.setBackground(new java.awt.Color(204, 204, 204));
@@ -303,6 +350,9 @@ public class Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_bCancelarMouseClicked
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        
+        if("alta".equals(accion)){
+
         // Insertar empleado
         
         /*dni,nss,nombreApellido,direccion,telefono,sexo,estadoCivil,
@@ -324,12 +374,16 @@ public class Formulario extends javax.swing.JFrame {
             }else{
                 estadoCivil = "Casad@";
             }
-        String contrat = cbContrato.getSelectedItem().toString();
-             
-        String departament = cbDepartamento.getSelectedItem().toString();
+    
         
-       
+        int  numContrato = cbContrato.getSelectedIndex();
+        Contrato contrat =  aContrato[numContrato];
+          
         
+        int numDepartamento = cbDepartamento.getSelectedIndex();
+        Departamento departament = aDepartamento[numDepartamento];
+        
+
             System.out.println(dni + "\n"  + 
                     nss +"\n" +
                     nombreApellido  +"\n" +
@@ -356,8 +410,22 @@ public class Formulario extends javax.swing.JFrame {
         cbDepartamento.getItemAt(-1);
         tfNumeroEmpleado.setText("");
         
+     }   
+     if(accion.equals("baja")){
+         
+        //t8p4ej1.Main.borrarPersona(p);
+        //int x = JOptionPane.showConfirmDialog(rootPane, "Estas seguro que desea borrar?");
         
         
+        
+         
+
+     } 
+     if(accion.equals("modificar")){
+     
+         //modificarDatos();
+    
+     }
         
         
     }//GEN-LAST:event_bAceptarActionPerformed
@@ -405,7 +473,108 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    
+    public void llenarComboBoxContrato(Contrato[] aaContrato){
+    
+        aContrato = aaContrato;
+        
+        
+        int x;
+        for(x=0; x < aContrato.length ; x++){
+            cbContrato.addItem(aContrato[x].getTipoContrato());
+        }
+ 
+    }
+    public void llenarComboBoxDepartamento(Departamento[] aaDepartamento){
+    
+        aDepartamento = aaDepartamento;
+        
+        
+        int x;
+        for(x=0; x < aDepartamento.length ; x++){
+            cbDepartamento.addItem(aDepartamento[x].getNombre());
+        }
+ 
+    }
+    public void deshabilitarComponentesBorrar(){
+         tfDni.setEnabled(false);
+         tfNss.setEnabled(false);
+         tfNombreApellido.setEnabled(false);
+         tfDireccion.setEnabled(false);
+         tfTelefono.setEnabled(false);
+         rbHombre.setEnabled(false);
+         rbMujer.setEnabled(false);
+         rbSoltero.setEnabled(false);
+         rbCasado.setEnabled(false);
+         cbContrato.setEnabled(false);
+         cbDepartamento.setEnabled(false);
 
+    }
+    
+    public void deshabilitarComponentesModificar(){
+         tfDni.setEnabled(false);
+         tfNss.setEnabled(false);
+         rbHombre.setEnabled(false);
+         rbMujer.setEnabled(false);
+
+    }
+    
+    public void rellenarDatos(){
+    
+        tfDni.setText(p.getDni());
+        tfNss.setText(p.getNss());
+        tfNombreApellido.setText(p.getNombreApellido());
+        tfDireccion.setText(p.getDireccion());
+        tfTelefono.setText(p.getTelefono());
+
+    }
+    
+    public void modificarDatos(){
+    
+        String dni = tfDni.getText();
+        String nss = tfNss.getText();
+        String nombreApellido = tfNombreApellido.getText();
+        String direccion = tfDireccion.getText();
+        String telefono = tfTelefono.getText();
+        String sexo = "";
+            if(rbHombre.isSelected()){
+                sexo = "Hombre";
+            }else{
+                sexo = "Mujer";
+            }
+        String estadoCivil = "";
+            if(rbSoltero.isSelected()){
+                estadoCivil="Soloter@";
+            }else{
+                estadoCivil = "Casad@";
+            }
+    
+        
+        int  numContrato = cbContrato.getSelectedIndex();
+        Contrato contrat =  aContrato[numContrato];
+          
+        
+        int numDepartamento = cbDepartamento.getSelectedIndex();
+        Departamento departament = aDepartamento[numDepartamento];
+        
+
+            System.out.println(dni + "\n"  + 
+                    nss +"\n" +
+                    nombreApellido  +"\n" +
+                    direccion  +"\n" +
+                    telefono  +"\n" +
+                    sexo  +"\n" +
+                    estadoCivil);
+                System.out.println("Contrato " + contrat);
+                System.out.println("Departamento " + departament);
+                System.out.println("fecha " + fecha);
+    
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;

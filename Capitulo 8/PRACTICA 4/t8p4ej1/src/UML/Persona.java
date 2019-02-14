@@ -13,8 +13,6 @@ public class Persona {
     private String telefono;
     private String sexo;
     private String estadoCivil;
-    private String contrat;
-    private String depart;
     private Date fechaAlta;
     private int numeroEmpleado;
     
@@ -25,22 +23,6 @@ public class Persona {
 
     public Persona() {
     }
-
-    public Persona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, String contrat, String depart, Date fechaAlta, int numeroEmpleado) {
-        this.dni = dni;
-        this.nss = nss;
-        this.nombreApellido = nombreApellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.sexo = sexo;
-        this.estadoCivil = estadoCivil;
-        this.contrat = contrat;
-        this.depart = depart;
-        this.fechaAlta = fechaAlta;
-        this.numeroEmpleado = numeroEmpleado;
-    }
-
-    
     
     public Persona(String dni, String nss, String nombreApellido, String direccion, String telefono, String sexo, String estadoCivil, Contrato contrato, Departamento departamento, Date fechaAlta, int numeroEmpleado) {
         this.dni = dni;
